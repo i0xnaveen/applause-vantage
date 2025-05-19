@@ -1,21 +1,22 @@
-const Hapi = require('hapi');
-const { request } = require('express');
+const Hapi = require("@hapi/hapi");
+// Bootstrap modules
+const config = require("./config");
+const { setupGraphQL } = require("./bootstrap/graphql");
 
-const init = async () => {
-    const server = Hapi.server({
-        port: 3001,
-        host: 'localhost'
-    })
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: (request,h)=>{
-            return "Hello"
-        }
+async function init() {
+  const server = Hapi.server({
+    port: config.server.port || 3001,
+    host: config.server.host || "0.0.0.0",
+  });
+  await setupGraphQL(server);
 
-    })
-    await server.start()
-    console.log("server is running on the port");
-    
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
 }
-init()
+
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Rejection:", err);
+  process.exit(1);
+});
+
+init();

@@ -1,6 +1,32 @@
 {
+  "name": "back",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "express": "^5.1.0",
-    "hapi": "^18.1.0"
+    "@hapi/hapi": "*",
+    "@hapi/boom": "*",
+    "@hapi/inert": "*",
+    "@hapi/vision": "*",
+    "apollo-server-hapi": "*",
+    "graphql": "*",
+    "graphql-type-json": "*",
+    "@graphql-tools/load-files": "*",
+    "@graphql-tools/merge": "*",
+    "@graphql-tools/schema": "*",
+    "mysql2": "*",
+    "sequelize": "*",
+    "amqp-connection-manager": "*",
+    "amqplib": "*",
+    "dotenv": "*",
+    "node-cache": "*",
+    "axios": "*",
+    "chalk": "*",
+    "bunyan": "*",
+    "uuid": "*",
+    "lodash": "*",
+    "pdi-js": "*"
   }
 }

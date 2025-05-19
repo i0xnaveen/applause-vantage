@@ -2,12 +2,11 @@ FROM node:18-buster-slim
 
 WORKDIR /app
 
-COPY . /app/back
-
-WORKDIR /app/back
-
+COPY package*.json ./
 RUN npm install
 
-EXPOSE 3000
+COPY . .
+
+EXPOSE 3001
 
 CMD ["node", "server.js"]
