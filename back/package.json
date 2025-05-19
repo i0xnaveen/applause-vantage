@@ -1,6 +1,16 @@
 {
+  "name": "back",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "express": "^5.1.0",
-    "hapi": "^18.1.0"
+    "@hapi/hapi": "^20.2.2",
+    "apollo-server-hapi": "^3.13.0",
+    "graphql": "^16.7.1",
+    "sequelize": "^6.35.1",
+    "mysql2": "^3.9.2",
+    "dotenv": "^16.3.1"
   }
 }
