@@ -1,0 +1,1 @@
+docker compose -f compose-mac.yml up -d
