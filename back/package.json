@@ -6,11 +6,27 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "@hapi/hapi": "^20.2.2",
-    "apollo-server-hapi": "^3.13.0",
-    "graphql": "^16.7.1",
-    "sequelize": "^6.35.1",
-    "mysql2": "^3.9.2",
-    "dotenv": "^16.3.1"
+    "@hapi/hapi": "*",
+    "@hapi/boom": "*",
+    "@hapi/inert": "*",
+    "@hapi/vision": "*",
+    "apollo-server-hapi": "*",
+    "graphql": "*",
+    "graphql-type-json": "*",
+    "@graphql-tools/load-files": "*",
+    "@graphql-tools/merge": "*",
+    "@graphql-tools/schema": "*",
+    "mysql2": "*",
+    "sequelize": "*",
+    "amqp-connection-manager": "*",
+    "amqplib": "*",
+    "dotenv": "*",
+    "node-cache": "*",
+    "axios": "*",
+    "chalk": "*",
+    "bunyan": "*",
+    "uuid": "*",
+    "lodash": "*",
+    "pdi-js": "*"
   }
 }
