@@ -1,6 +1,7 @@
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { ApolloServer } = require("apollo-server-hapi");
 const { typeDefs, resolvers } = require("../graphql");
+const di = require('../bootstrap/di')
 
 async function setupGraphQL(server) {
   const schema = makeExecutableSchema({ typeDefs, resolvers });
