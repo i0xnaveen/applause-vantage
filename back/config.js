@@ -11,4 +11,9 @@ module.exports = {
     dialect: "mysql",
   },
   env: process.env.NODE_ENV || "development",
-};
+  googApi:{
+    clientId: process.env.CLIENT_ID,
+    secretId: process.env.CLIENT_SECRET,
+    redirectUrl: process.env.REDIRECT_URI,
+  },
+}
