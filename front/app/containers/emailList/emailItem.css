@@ -1,0 +1,10 @@
+body {
+    background-color: aquamarine !important;
+}
+
+
+.email-border {
+    border: 1px solid white; 
+    border-radius: 6px;      
+  }
+  

@@ -3,13 +3,14 @@ module.exports = function UserModel(sequelize, Datatypes){
     id: {type: Datatypes.STRING, primaryKey: true},
     name: {type: Datatypes.STRING, unique: true},
     email: {type: Datatypes.STRING, unique: true},
-    password: {type: Datatypes.STRING},
-    scope: {type: Datatypes.STRING, unique: true},
+    token: {type: Datatypes.STRING},
   },{
     tableName: "users",
   },
 
   )
+  )
 
+  return User
   return User
 }

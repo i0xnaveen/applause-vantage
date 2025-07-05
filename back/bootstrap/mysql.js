@@ -1,38 +1,44 @@
 const { Sequelize } = require("sequelize")
 require('dotenv').config()
+const UserModel = require('../src/components/users/mysql/model')
 
+let sequelizeConnection
 let sequelizeConnection
 
 try {
-  console.log("pro",process.env.DB_USER)
+  console.log("pro",process.env.DB_HOST)
   
   sequelizeConnection = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASS,
     {
-      host: process.env.DB_HOST,
+      host: 'localhost',
       dialect: "mysql",
       logging: console.log,
     },
   )
+    },
+  )
 } catch (err) {
+  console.error("Sequelize init error:", err)
   console.error("Sequelize init error:", err)
 }
 
 
-const User = require("../models/users.model")(sequelizeConnection, Sequelize.DataTypes)
-const Organization = require("../models/organizations.model")(sequelizeConnection, Sequelize.DataTypes)
-console.log("Heo")
+const User = UserModel(sequelizeConnection, Sequelize.DataTypes)
 
 
 module.exports = {
   sequelizeConnection,
   User,
-  Organization,
   init: async (syncOptions = {}) => {
     console.log("Initializing Sequelize sync...")
     return sequelizeConnection.sync(syncOptions)
+    console.log("Initializing Sequelize sync...")
+    return sequelizeConnection.sync(syncOptions)
 
+  },
+}
   },
 }
