@@ -3,6 +3,8 @@
 # dependencies
 front/node_modules
 back/node_modules
+back/.env
+back/src/components/oauth/handler/token.json
 /.pnp
 .pnp.js
 
@@ -13,6 +15,7 @@ back/node_modules
 /build
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local

@@ -1,17 +1,11 @@
 // src/components/oauth/handler.js
 const fs = require('fs')
 const path = require('path')
-const { google } = require('googleapis')
-
-const TOKEN_PATH = path.join(__dirname, 'token.json')
-
-let oAuthClient
-
-function initOAuthClient({ clientId, clientSecret, redirectUri }) {
-  oAuthClient = new google.auth.OAuth2(clientId, clientSecret, redirectUri)
-  return oAuthClient
-}
-
+const { generateEmailContent } = require('../../ai/handler/generateAiMail')
+const TOKEN_PATH = path.join(__dirname, '../.././../../token.json')
+const { oAuthClient } = require('../../../utils/auth') 
+const { log } = require('console')
+console.log("vannakak", TOKEN_PATH);
 const loginHandler = (request, h) => {
   const authUrl = oAuthClient.generateAuthUrl({
     access_type: 'offline',
@@ -21,6 +15,7 @@ const loginHandler = (request, h) => {
       'email',
     ],
   })
+  console.log("teh auy", authUrl);
   return h.redirect(authUrl)
 }
 
@@ -39,39 +34,17 @@ const callbackHandler = async (request, h) => {
   }
 }
 
-const emailsHandler = async (request, h) => {
-  if (!fs.existsSync(TOKEN_PATH)) {
-    return h.response('🔐 Not authenticated. Go to /login').code(401)
-  }
 
-  const token = JSON.parse(fs.readFileSync(TOKEN_PATH))
-  oAuthClient.setCredentials(token)
+const testEmailGeneartion = async (prompt, email) => {
 
-  const gmail = google.gmail({ version: 'v1', auth: oAuthClient })
+const response = await generateEmailContent(prompt, email)
+console.log("The response was the", response);
 
-  try {
-    const res = await gmail.users.messages.list({ userId: 'me' })
-    const emails = []
 
-    for (const msg of res.data.messages || []) {
-      const detail = await gmail.users.messages.get({ userId: 'me', id: msg.id })
-
-      const subject = detail.data.payload.headers.find((h) => h.name === 'Subject')?.value || '(no subject)'
-      const from = detail.data.payload.headers.find((h) => h.name === 'From')?.value || '(unknown)'
-
-      emails.push({ subject, from })
-    }
-
-    return h.response(emails).code(200)
-  } catch (err) {
-    console.error('Fetch email error:', err)
-    return h.response('❌ Error fetching emails').code(500)
-  }
 }
 
+
 module.exports = {
-  initOAuthClient,
   loginHandler,
   callbackHandler,
-  emailsHandler,
 }
