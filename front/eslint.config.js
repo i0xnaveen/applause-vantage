@@ -1,29 +1,66 @@
+import eslintPluginPromise from 'eslint-plugin-promise'
 import js from '@eslint/js'
 import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
 
-export default defineConfig([
-  globalIgnores(['dist']),
+export default [
+  js.configs.recommended,
   {
     files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ecmaVersion: 2024,
+      sourceType: 'module',
+      // ✅ parserOptions goes INSIDE languageOptions
       parserOptions: {
-        ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
-        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true, 
+        },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
       },
     },
+    plugins: {
+      promise: eslintPluginPromise,
+    },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      semi: ['error', 'never'],
+      'arrow-parens': ['error', 'always'],
+      'arrow-body-style': ['error', 'as-needed'],
+      'comma-dangle': ['error', 'always-multiline'],
+      'promise/always-return': 'error',
+      'promise/catch-or-return': 'error',
+      'promise/param-names': 'error',
+      'promise/no-native': 'error',
+      'promise/no-return-wrap': 'error',
+      'promise/avoid-new': 'off',
+      'promise/no-nesting': 'off',
+      'promise/no-promise-in-callback': 'warn',
+      'promise/no-callback-in-promise': 'warn',
+      indent: ['error', 2, { SwitchCase: 1 }],
+      'max-len': 'off',
+      'newline-per-chained-call': 'off',
+      'no-confusing-arrow': 'off',
+      'no-console': 'warn',
+      'no-use-before-define': 'off',
+      'prefer-template': 'error',
+      'class-methods-use-this': 'off',
+      'require-yield': 'off',
+      'no-underscore-dangle': 'off',
+      'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
+      'guard-for-in': 'off',
+      'no-await-in-loop': 'off',
+      'no-param-reassign': 'off',
+      'no-plusplus': 'off',
+      'no-prototype-builtins': 'off',
+    },
+    settings: {
+      'import/resolver': {
+        node: {
+          moduleDirectory: ['node_modules', '.'],
+        },
+      },
     },
   },
-])
+]

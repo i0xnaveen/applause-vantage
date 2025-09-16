@@ -6,17 +6,22 @@
     "start": "node server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+    "start": "node server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@graphql-tools/load-files": "*",
     "@graphql-tools/merge": "*",
     "@graphql-tools/schema": "*",
-    "@hapi/boom": "*",
+    "@hapi/boom": "^10.0.1",
+    "@hapi/cookie": "^12.0.1",
     "@hapi/hapi": "*",
     "@hapi/inert": "*",
     "@hapi/vision": "*",
     "amqp-connection-manager": "*",
     "amqplib": "*",
+    "apollo-server-hapi": "*",
     "apollo-server-hapi": "*",
     "axios": "*",
     "bunyan": "*",
@@ -24,12 +29,13 @@
     "dotenv": "*",
     "graphql": "*",
     "graphql-type-json": "*",
+    "jsonwebtoken": "^9.0.2",
     "lodash": "*",
     "mysql2": "*",
     "node-cache": "*",
-    "pdi-js": "*",
+    "pdi-js": "^1.3.1",
     "sequelize": "*",
-    "uuid": "*"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

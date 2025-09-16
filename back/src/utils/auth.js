@@ -3,11 +3,10 @@ const config = require("../../config")
 
 
 const oAuthClient = new google.auth.OAuth2({
-    client_id: config.googApi.clientId,
-    clientSecret: config.googApi.secretId,
-    redirectUri: config.googApi.redirectUrl,
+  client_id: config.googApi.clientId,
+  clientSecret: config.googApi.secretId,
 })
 
 module.exports = {
-    oAuthClient
+  oAuthClient,
 }

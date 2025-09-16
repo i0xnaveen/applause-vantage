@@ -1,6 +1,9 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Sidebar = ({ pages }) => {
+
+
+const Sidebar = () => {
   const sidebarStyle = {
     height: '100vh',
     width: '220px',
@@ -11,22 +14,22 @@ const Sidebar = ({ pages }) => {
     position: 'fixed',
     left: 0,
     top: 0,
-  };
+  }
 
   const logoStyle = {
     fontSize: '24px',
     marginBottom: '40px',
     textAlign: 'center',
-  };
+  }
 
   const navLinksStyle = {
     listStyle: 'none',
     padding: 0,
-  };
+  }
 
   const navItemStyle = {
     margin: '20px 0',
-  };
+  }
 
   const linkStyle = {
     color: 'white',
@@ -34,17 +37,18 @@ const Sidebar = ({ pages }) => {
     fontSize: '18px',
     display: 'block',
     transition: 'color 0.2s',
-  };
+  }
 
   const hoverStyle = {
     color: '#1abc9c',
-  };
+  }
 
   return (
     <div style={sidebarStyle}>
       <h2 style={logoStyle}>MyApp</h2>
-      <ul style={navLinksStyle}>
-        {pages.map((page, index) => (
+      <Link to="/emails">Email</Link>
+
+      {/* {pages.map((page, index) => (
           <li key={index} style={navItemStyle}>
             <a
               href={page.href}
@@ -57,9 +61,9 @@ const Sidebar = ({ pages }) => {
             </a>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

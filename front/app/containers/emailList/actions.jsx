@@ -8,9 +8,6 @@ import {
 export const fetchEmails = () => ({ type: FETCH_EMAILS })
 export const fetchEmailsSuccess = (emails) => ({ type: FETCH_EMAILS_SUCCESS, emails })
 export const fetchEmailsFailure = (error) => ({ type: FETCH_EMAILS_FAILURE, error })
-export const fetchEmailById = (id) =>{
-  console.log("helelloo", id)
-  return{
-   type: FETCH_EMAIL_BY_ID, payload: id
-  }
-}
+export const fetchEmailById = (id) =>({
+  type: FETCH_EMAIL_BY_ID, payload: id,
+})
