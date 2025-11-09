@@ -1,9 +1,5 @@
 const Hapi = require("@hapi/hapi")
-const Hapi = require("@hapi/hapi")
 // Bootstrap modules
-require('dotenv').config()
-const config = require("./config")
-const { setupGraphQL } = require("./bootstrap/graphql")
 require('dotenv').config()
 const config = require("./config")
 const { setupGraphQL } = require("./bootstrap/graphql")
@@ -92,9 +88,5 @@ process.on("unhandledRejection", (err) => {
   console.error("Unhandled Rejection:", err)
   process.exit(1)
 })
-  console.error("Unhandled Rejection:", err)
-  process.exit(1)
-})
 
-init()
 init()

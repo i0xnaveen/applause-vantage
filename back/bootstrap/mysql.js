@@ -3,7 +3,6 @@ require('dotenv').config()
 const UserModel = require('../src/components/users/mysql/model')
 
 let sequelizeConnection
-let sequelizeConnection
 
 try {
   console.log("pro",process.env.DB_HOST)
@@ -16,8 +15,6 @@ try {
       host: 'localhost',
       dialect: "mysql",
       logging: console.log,
-    },
-  )
     },
   )
 } catch (err) {
@@ -35,10 +32,8 @@ module.exports = {
   init: async (syncOptions = {}) => {
     console.log("Initializing Sequelize sync...")
     return sequelizeConnection.sync(syncOptions)
-    console.log("Initializing Sequelize sync...")
-    return sequelizeConnection.sync(syncOptions)
+
 
   },
 }
-  },
-}
+
